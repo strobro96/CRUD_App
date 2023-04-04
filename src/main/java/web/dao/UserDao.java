@@ -9,10 +9,10 @@ public interface UserDao {
     public void saveUser(User user);
 
     //Метод для получения пользователя по id
-    public User getUserById (long id);
+    public User getUserById (Long id);
 
     //Метод для удаления пользователя
-    public void deleteUser(long id);
+    public void deleteUser(Long id);
 
     //Метод для получения списка пользователей
     public List<User> getAllUsers();

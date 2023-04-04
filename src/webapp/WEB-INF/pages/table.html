@@ -15,20 +15,11 @@
             <th>Age</th>
         </tr>
         <tr th:each="user : ${allUsers}">
-            <td th:text="${user.getName()}"></td>
-            <td th:text="${user.getSurname()}"></td>
-            <td th:text="${user.getAge()}"></td>
-            <td>
-                <form th:attr="action=@{/update}">
-                    <button type="submit" th:name="userId" th:value="${user.getId()}">Update</button>
-                </form>
-            </td>
-            <td>
-                <form th:attr="action=@{/delete}">
-                    <button type="submit" th:name="userId" th:value="${user.getId()}">Delete</button>
-                </form>
-            </td>
-
+            <td th:text="${user.name}"></td>
+            <td th:text="${user.surname}"></td>
+            <td th:text="${user.age}"></td>
+            <td><form th:action="@{/update/{id}(id=${user.id})}" th:method="PATCH"><input type="submit" value="Update"></form></td>
+            <td><form th:action="@{/delete/{id}(id=${user.id})}" th:method="DELETE"><input type="submit" value="Delete"></form></td>
         </tr>
     </table>
 </div>

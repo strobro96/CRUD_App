@@ -15,11 +15,14 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void saveUser(User user) {
+        if (user.getId() == null) {
+            entityManager.persist(user);
+        }
         entityManager.merge(user);
     }
 
     @Override
-    public void deleteUser(long id) {
+    public void deleteUser(Long id) {
         entityManager.remove(entityManager.find(User.class, id));
     }
 
@@ -30,7 +33,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User getUserById(long id) {
+    public User getUserById(Long id) {
         return entityManager.find(User.class, id);
     }
 }
